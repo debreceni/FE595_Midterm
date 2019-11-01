@@ -5,7 +5,7 @@ from functions import get_sentiment, translate, detect
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '359c1b53dee7a225ec6520a1911b2b4f'
+app.config['SECRET_KEY'] = '359c1b53dee7a225ec6520a1911b2b4'
 
 
 ### Home Page
@@ -20,7 +20,7 @@ def service1():
     form = SentimentForm()
     if form.validate_on_submit():
         out =get_sentiment(form.text.data)
-        flash(f'Sentiment Score: {out}', 'success')
+        flash('Sentiment Score: %s' %out, 'success')
     return render_template('service1.html', title = 'Sentiment', form = form)
 
 
@@ -30,7 +30,7 @@ def service2():
     form = SentimentForm()
     if form.validate_on_submit():
         out =translate(form.text.data)
-        flash(f'Translated: {out}', 'success')
+        flash('Translated: %s' %out, 'success')
     return render_template('service2.html', title = 'Language Translation', form = form)
 
 
@@ -40,7 +40,7 @@ def service3():
     form = SentimentForm()
     if form.validate_on_submit():
         out =detect(form.text.data)
-        flash(f'Language: {out}', 'success')
+        flash('Language: %s' %out, 'success')
     return render_template('service3.html', title = 'Language Detection', form = form)
 
 ################################ Service 4 ################################
@@ -49,7 +49,7 @@ def service4():
     form = SentimentForm()
     if form.validate_on_submit():
         out =get_sentiment(form.text.data)
-        flash(f'Service 4 Output: {out}', 'success')
+        flash('Service 4 Output: %s' %out, 'success')
     return render_template('service4.html', title = 'Sentiment', form = form)
 
 
@@ -59,7 +59,7 @@ def service5():
     form = SentimentForm()
     if form.validate_on_submit():
         out =get_sentiment(form.text.data)
-        flash(f'Service 5 Output: {out}', 'success')
+        flash('Service 5 Output: %s' %out, 'success')
     return render_template('service5.html', title = 'Sentiment', form = form)
 
 ################################ Service 6 ################################
@@ -68,7 +68,7 @@ def service6():
     form = SentimentForm()
     if form.validate_on_submit():
         out =get_sentiment(form.text.data)
-        flash(f'Service 6 Output: {out}', 'success')
+        flash('Service 6 Output: %s' %out, 'success')
     return render_template('service6.html', title = 'Sentiment', form = form)
 
 
