@@ -20,7 +20,7 @@ def translate(text):
 ################ Service 3 ##################
 def detect(text):
     try:
-        sent=TextBlob(text).detect_language(text)
+        sent=TextBlob(text).detect_language()
     except:
         sent = "Cannot determine language"
     return str(sent)
