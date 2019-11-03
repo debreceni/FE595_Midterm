@@ -9,18 +9,20 @@ def get_sentiment(text):
         sent = "Cannot determine sentiment."
     return float(str(sent))
 
+
 ################ Service 2 ##################
 def translate(text):
     try:
-        sent = TextBlob(text).translate(to = 'fr')
+        sent = TextBlob(text).translate(to='fr')
     except:
         sent = "This statement is invalid."
     return str(sent)
 
+
 ################ Service 3 ##################
 def detect(text):
     try:
-        sent=TextBlob(text).detect_language()
+        sent = TextBlob(text).detect_language()
     except:
         sent = "Cannot determine language"
     return str(sent)
