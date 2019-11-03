@@ -1,15 +1,19 @@
 {% extends "service.html" %}
 {% block instructions %}
 
-Enter some text in the text box below and the sentiment score will be returned.
+Enter some text in the text box and select a tag type to search for.
 <br>
 <br>
 <u><b>Example</b></u>:
 <br>
-<b>Input:</b> I love this sentiment score service!
+<b>Input:</b>
+<ul>
+    <li>Text: I want to go to work, but I am too sick to drive.</li>
+    <li>Tag: Verb</li>
+</ul>
 <br>
 
-<b>Output</b>: Sentiment Score: 0.625
+<b>Output</b>: want, go, am, drive
 
 
 {% endblock instructions %}

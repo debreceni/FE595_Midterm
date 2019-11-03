@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import SentimentForm
-from functions import get_sentiment, translate, detect
+from forms import *
+from functions import *
 
 
 app = Flask(__name__)
@@ -46,21 +46,21 @@ def service3():
 ################################ Service 4 ################################
 @app.route("/service4", methods=['GET', 'POST'])
 def service4():
-    form = SentimentForm()
+    form = POSForm()
     if form.validate_on_submit():
-        out =get_sentiment(form.text.data)
-        flash('Service 4 Output: %s' %out, 'success')
-    return render_template('service4.html', title = 'Sentiment', form = form)
+        out = getPOS(form.text.data, form.tag.data)
+        flash('%ss: %s' % (form.tag.data.capitalize(), out), 'success')
+    return render_template('service4.html', title='Part of Speech Search', form=form)
 
 
 ################################ Service 5 ################################
 @app.route("/service5", methods=['GET', 'POST'])
 def service5():
-    form = SentimentForm()
+    form = SimilarityForm()
     if form.validate_on_submit():
-        out =get_sentiment(form.text.data)
-        flash('Service 5 Output: %s' %out, 'success')
-    return render_template('service5.html', title = 'Sentiment', form = form)
+        out = getSimilarity(form.text1.data, form.text2.data)
+        flash('Similarity: %s' % out, 'success')
+    return render_template('service5.html', title='Text Similarity', form=form)
 
 ################################ Service 6 ################################
 @app.route("/service6", methods=['GET', 'POST'])
