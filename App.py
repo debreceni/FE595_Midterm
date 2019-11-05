@@ -24,7 +24,15 @@ def service1():
         flash('Sentiment Score: %s' % out, 'success')
     return render_template('service1.html', title='Sentiment', form=form)
 
-
+@app.route("/service1api", methods=['GET'])
+def service1api():
+    args = request.args
+    if 'text' in args:
+        text = args.get('text')
+        out =get_sentiment(text)
+        return jsonify(sentiment=out)
+    else:
+        return "missing text parameter"
 ################################ Service 2 ################################
 @app.route("/service2", methods=['GET', 'POST'])
 def service2():
@@ -34,7 +42,15 @@ def service2():
         flash('Translated: %s' % out, 'success')
     return render_template('service2.html', title='Language Translation', form=form)
 
-
+@app.route("/service2api", methods=['GET'])
+def service2api():
+    args = request.args
+    if 'text' in args:
+        text = args.get('text')
+        out =translate(text)
+        return jsonify(translate=out)
+    else:
+        return "missing text parameter"
 ################################ Service 3 ################################
 @app.route("/service3", methods=['GET', 'POST'])
 def service3():
@@ -44,6 +60,15 @@ def service3():
         flash('Language: %s' % out, 'success')
     return render_template('service3.html', title='Language Detection', form=form)
 
+@app.route("/service3api", methods=['GET'])
+def service3api():
+    args = request.args
+    if 'text' in args:
+        text = args.get('text')
+        out =detect(text)
+        return jsonify(language=out)
+    else:
+        return "missing text parameter"
 ################################ Service 4 ################################
 @app.route("/service4", methods=['GET', 'POST'])
 def service4():
@@ -53,7 +78,16 @@ def service4():
         flash('%ss: %s' % (form.tag.data.capitalize(), out), 'success')
     return render_template('service4.html', title='Part of Speech Search', form=form)
 
-
+@app.route("/service4api", methods=['GET'])
+def service4api():
+    args = request.args
+    if 'text' in args and 'tag' in args:
+        text = args.get('text')
+        tag = args.get('tag')
+        out =getPOS(text, tag)
+        return jsonify(POS=out)
+    else:
+        return "missing text or tag parameter"
 ################################ Service 5 ################################
 @app.route("/service5", methods=['GET', 'POST'])
 def service5():
@@ -62,6 +96,17 @@ def service5():
         out = getSimilarity(form.text1.data, form.text2.data)
         flash('Similarity: %s' % out, 'success')
     return render_template('service5.html', title='Text Similarity', form=form)
+
+@app.route("/service5api", methods=['GET'])
+def service6api():
+    args = request.args
+    if 'text1' in args and 'text2' in args:
+        text1 = args.get('text1')
+        text2 = args.get('text2')
+        out =getSimilarity(text1, text2)
+        return jsonify(anagrams=out)
+    else:
+        return "missing text1 or text2 parameter"
 
 ################################ Service 6 ################################
 @app.route("/service6", methods=['GET', 'POST'])
