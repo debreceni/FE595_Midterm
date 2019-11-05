@@ -3,7 +3,7 @@ from nltk.corpus import words
 import nltk
 import string
 from collections import defaultdict
-
+nltk.download('words')
 
 ################ Service 1 ##################
 def get_sentiment(text):
@@ -34,11 +34,8 @@ def detect(text):
 def get_anagram(text):
     
     try:
-        nltk.download('words')
-
         MIN_WORD_SIZE = 3
-
-        testWords = text
+        testWords = text.lower()
 
         # Load the dictionary
         d = defaultdict(list)
@@ -50,7 +47,7 @@ def get_anagram(text):
 
         #build a key for the test word
         testWordKey = "".join(sorted(testWords.lower().translate(str.maketrans('','',string.punctuation)))).strip()
-        return d[testWordKey].remove(text)
+        return [w for w in d[testWordKey] if w != text.lower()]
     except:
         return None
 

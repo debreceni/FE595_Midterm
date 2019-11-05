@@ -50,11 +50,9 @@ def service4():
     out = None
     if form.validate_on_submit():
         out =get_anagram(form.text.data)
-        if out:
-            flash('Anagrams success')
-        else:
-            out = ["no Anagrams Found"]
-    return render_template('service4.html', title = 'Anagram', form = form, outlst = out)
+        
+        flash('Anagram: %s' %out, 'success')
+    return render_template('service4.html', title = 'Anagram', form = form)
 
 
 ################################ Service 5 ################################
