@@ -1,4 +1,8 @@
 from textblob import TextBlob
+from nltk.corpus import words
+import nltk
+import string
+from collections import defaultdict
 
 
 ################ Service 1 ##################
@@ -27,6 +31,28 @@ def detect(text):
 
 
 ################ Service 4 ##################
+def get_anagram(text):
+    
+    try:
+        nltk.download('words')
+
+        MIN_WORD_SIZE = 3
+
+        testWords = 'Test'
+
+        # Load the dictionary
+        d = defaultdict(list)
+        for word in words.words():
+            key = "".join(sorted(word.lower().translate(str.maketrans('','',string.punctuation)))).strip()
+            if len(key) >= MIN_WORD_SIZE:
+                d[key].append(word.lower())
+                d[key] = list(set(d[key]))
+
+        #build a key for the test word
+        testWordKey = "".join(sorted(testWords.lower().translate(str.maketrans('','',string.punctuation)))).strip()
+        return d[testWordKey].remove(text)
+    except:
+        return ["No Anagram"]
 
 
 ################ Service 5 ##################
