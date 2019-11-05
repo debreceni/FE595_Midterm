@@ -38,7 +38,7 @@ def get_anagram(text):
 
         MIN_WORD_SIZE = 3
 
-        testWords = 'Test'
+        testWords = text
 
         # Load the dictionary
         d = defaultdict(list)
@@ -52,7 +52,7 @@ def get_anagram(text):
         testWordKey = "".join(sorted(testWords.lower().translate(str.maketrans('','',string.punctuation)))).strip()
         return d[testWordKey].remove(text)
     except:
-        return ["No Anagram"]
+        return None
 
 
 ################ Service 5 ##################

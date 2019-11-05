@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import SentimentForm
-from functions import get_sentiment, translate, detect
+from functions import get_sentiment, translate, detect, get_anagram
 
 
 app = Flask(__name__)
@@ -47,10 +47,14 @@ def service3():
 @app.route("/service4", methods=['GET','POST'])
 def service4():
     form = SentimentForm()
+    out = None
     if form.validate_on_submit():
-        out =get_sentiment(form.text.data)
-        flash('Service 4 Output: %s' %out, 'success')
-    return render_template('service4.html', title = 'Sentiment', form = form)
+        out =get_anagram(form.text.data)
+        if out:
+            flash('Anagrams success')
+        else 
+            out = ["no Anagrams Found"]
+    return render_template('service4.html', title = 'Anagram', form = form, outlst = out)
 
 
 ################################ Service 5 ################################

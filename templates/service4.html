@@ -13,3 +13,12 @@ Enter a word in the text box below and the possible anagrams will be returned.
 
 
 {% endblock instructions %}
+
+{% if outlst %}
+    <ul class=flashes>
+        {% for out in outlst %}
+            <li>{{out}}</li>
+        {% endfor %}
+
+    </ul>
+{% endif%}
