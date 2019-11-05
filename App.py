@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, flash, redirect
+from flask import Flask, render_template, url_for, flash, redirect, jsonify, request
 from forms import *
 from functions import *
 
@@ -76,6 +76,15 @@ def service6():
     return render_template('service6.html', title = 'Anagram', form = form)
 
 
+@app.route("/service6api", methods=['GET'])
+def service6api():
+    args = request.args
+    if 'text' in args:
+        text = args.get('text')
+        out =get_anagram(text)
+        return jsonify(anagrams=out)
+    else:
+        return "missing text parameter"
 
 
 if __name__ == '__main__':
