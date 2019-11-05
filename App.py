@@ -98,13 +98,13 @@ def service5():
     return render_template('service5.html', title='Text Similarity', form=form)
 
 @app.route("/service5api", methods=['GET'])
-def service6api():
+def service5api():
     args = request.args
     if 'text1' in args and 'text2' in args:
         text1 = args.get('text1')
         text2 = args.get('text2')
         out =getSimilarity(text1, text2)
-        return jsonify(anagrams=out)
+        return jsonify(similarity=out)
     else:
         return "missing text1 or text2 parameter"
 
