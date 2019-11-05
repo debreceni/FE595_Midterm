@@ -31,6 +31,13 @@ def detect(text):
 
 
 ################ Service 4 ##################
+
+
+
+################ Service 5 ##################
+
+
+################ Service 6 ##################
 def get_anagram(text):
     
     try:
@@ -50,9 +57,3 @@ def get_anagram(text):
         return [w for w in d[testWordKey] if w != text.lower()]
     except:
         return None
-
-
-################ Service 5 ##################
-
-
-################ Service 6 ##################

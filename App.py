@@ -47,12 +47,10 @@ def service3():
 @app.route("/service4", methods=['GET','POST'])
 def service4():
     form = SentimentForm()
-    out = None
     if form.validate_on_submit():
-        out =get_anagram(form.text.data)
-        
-        flash('Anagram: %s' %out, 'success')
-    return render_template('service4.html', title = 'Anagram', form = form)
+        out =get_sentiment(form.text.data)
+        flash('Service 4 Output: %s' %out, 'success')
+    return render_template('service4.html', title = 'Sentiment', form = form)
 
 
 ################################ Service 5 ################################
@@ -68,10 +66,12 @@ def service5():
 @app.route("/service6", methods=['GET','POST'])
 def service6():
     form = SentimentForm()
+    out = None
     if form.validate_on_submit():
-        out =get_sentiment(form.text.data)
-        flash('Service 6 Output: %s' %out, 'success')
-    return render_template('service6.html', title = 'Sentiment', form = form)
+        out =get_anagram(form.text.data)
+        
+        flash('Anagram: %s' %out, 'success')
+    return render_template('service6.html', title = 'Anagram', form = form)
 
 
 
