@@ -52,7 +52,7 @@ def service4():
         out =get_anagram(form.text.data)
         if out:
             flash('Anagrams success')
-        else 
+        else:
             out = ["no Anagrams Found"]
     return render_template('service4.html', title = 'Anagram', form = form, outlst = out)
 
