@@ -1,15 +1,22 @@
 {% extends "service.html" %}
 {% block instructions %}
 
-Enter a word in the text box below and the possible anagrams will be returned.
+Enter some text in the text box and select a tag type to search for.
+
 <br>
 <br>
 <u><b>Example</b></u>:
 <br>
-<b>Input:</b> car
+
+<b>Input:</b>
+<ul>
+    <li>Text: I want to go to work, but I am too sick to drive.</li>
+    <li>Tag: Verb</li>
+</ul>
 <br>
 
-<b>Output</b>: arc
+<b>Output</b>: want, go, am, drive
+
 
 
 {% endblock instructions %}

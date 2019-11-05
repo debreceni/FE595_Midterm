@@ -9,8 +9,12 @@
 				    <p>{% block instructions %}{% endblock instructions %} </p>
 			    <hr>
 			    <div class="form-group">
-				    {{ form.text.label(class="form-control-label") }}
-				    {{ form.text(class="form-control form-control") }}
+					{% for field in form %}
+						{% if field.id != "submit" %}
+							{{ field.label(class="form-control-label") }}
+							{{ field(class="form-control form-control") }}
+						{% endif %}
+					{% endfor %}
 			    </div>
 
 		    </fieldset>

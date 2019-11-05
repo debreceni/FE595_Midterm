@@ -1,15 +1,19 @@
 {% extends "service.html" %}
 {% block instructions %}
 
-Enter some text in the text box below and the sentiment score will be returned.
+Enter some text in each of the text boxes below to find their similarity.
 <br>
 <br>
 <u><b>Example</b></u>:
 <br>
-<b>Input:</b> I love this sentiment score service!
+<b>Input:</b>
+<ul>
+    <li>Text 1: It's hot in Arizona today.</li>
+    <li>Text 2: I went out to a restaurant for dinner last night.</li>
+</ul>
 <br>
 
-<b>Output</b>: Sentiment Score: 0.625
+<b>Output</b>: Similarity: 0.6421
 
 
 {% endblock instructions %}
