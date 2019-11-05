@@ -2,3 +2,4 @@ flask
 Flask-WTF
 textblob
 WTForms
+spacy
